@@ -11,7 +11,7 @@ class Signin {
       .and('be.visible')
       .contains('Sign in with Google');
   }
-  checkFcebookLitleLogo() {
+  checkFacebookLitleLogo() {
     cy.get('a[href="/auth/facebook"]').within(() => {
         cy.get('img')
           .should('be.visible')
@@ -23,5 +23,6 @@ class Signin {
       .should('have.attr', 'href', '/auth/facebook')
       .and('be.visible')
       .contains('Sign in with Facebook');
-  }
+  };
+ 
 }}
