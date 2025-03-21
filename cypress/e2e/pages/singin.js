@@ -11,18 +11,26 @@ class Signin {
       .and('be.visible')
       .contains('Sign in with Google');
   }
-  checkFacebookLitleLogo() {
+  checkGoogleLitleLogo() {
     cy.get('a[href="/auth/facebook"]').within(() => {
-        cy.get('img')
-          .should('be.visible')
-          .and('have.attr', 'src')
-          .and('include', 'facebook-2.svg');
-  })
+      cy.get('img')
+        .should('be.visible')
+        .and('have.attr', 'src')
+        .and('include', 'facebook-2.svg');
+    });
+  }
   checkFacebookButton() {
     cy.get('[href="/auth/facebook"]')
       .should('have.attr', 'href', '/auth/facebook')
       .and('be.visible')
       .contains('Sign in with Facebook');
-  };
- 
-}}
+  }
+  checkFacebookLitleLogo() {
+    cy.get('a[href="/auth/facebook"]').within(() => {
+      cy.get('img')
+        .should('be.visible')
+        .and('have.attr', 'src')
+        .and('include', 'facebook-2.svg');
+    });
+  }
+}
