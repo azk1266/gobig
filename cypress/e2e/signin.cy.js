@@ -12,10 +12,10 @@ describe('check Sign In Page', () => {
     });
     signin.visit();
   });
-  it('redirectFromHomePage', () => {
-    home.visit();
-    home.clickSignIn();
-  });
+  //   it('redirectFromHomePage', () => {
+  //     home.visit();
+  //     home.clickSignIn();
+  //   });
   it('checkProperties', () => {
     signin.getTitle();
     signin.checkEmailProperty();

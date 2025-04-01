@@ -1,10 +1,10 @@
 class Signin {
   constructor() {
     // this.actions = new Actions();
-    this.googleButton = '[href="/auth/google"]';
+    this.googleButton = 'a[href="/auth/google"]';
     this.facebookButton = '[href="/auth/facebook"]';
     this.email = 'input[name="email"]';
-    this.password = 'inputname="password"';
+    this.password = 'input[name="password"]';
     this.signinButton = 'button[id="kt_sign_up_submit"]';
   }
   visit() {
@@ -15,13 +15,14 @@ class Signin {
   }
   //Google button
   checkGoogleButton() {
-    cy.checkButton(googleButton, '/auth/google', 'Sign in with Google');
+    cy.checkButton(this.googleButton, '/auth/google', 'Sign in with Google');
   }
   checkGoogleLitleLogo() {
-    cy.checkSigninLogo(this.googleButton, 'facebook-2.svg');
+    cy.checkSigninLogo(this.googleButton, 'google-icon.svg');
   }
   checkGoogleRedirect() {
     cy.get(this.googleButton).click();
+    cy.wait(10000);
     cy.url().should('include', 'accounts.google.com');
   }
   //Facebook registration button
@@ -29,10 +30,11 @@ class Signin {
     cy.checkButton(facebookButton, '/auth/facebook', 'Sign in with Facebook');
   }
   checkFacebookLitleLogo() {
-    cy.checkSigninLogo(this.facebookButton, 'google-icon.svg');
+    cy.checkSigninLogo(this.facebookButton, 'facebook-2.svg');
   }
   checkFacebookRedirect() {
     cy.get(this.facebookButton).click();
+    cy.wait(3000);
     cy.url().should('include', 'facebook.com');
   }
   //Email, password properties check
