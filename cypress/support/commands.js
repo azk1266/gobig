@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import {
+  checkButton,
+  typeText,
+  checkSigninLogo,
+  verifyTheInputField,
+} from '../e2e/pages/global_methods.js';
+
+Cypress.Commands.add('checkButton', checkButton);
+Cypress.Commands.add('verifyTheInputField', verifyTheInputField);
+Cypress.Commands.add('typeText', typeText);
+Cypress.Commands.add('checkSigninLogo', checkSigninLogo);
