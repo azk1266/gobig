@@ -1,7 +1,7 @@
 class Signin {
   constructor() {
     // this.actions = new Actions();
-    this.googleButton = 'a[href="/auth/google"]';
+    this.googleButton = '[href="/auth/google"]';
     this.facebookButton = '[href="/auth/facebook"]';
     this.email = 'input[name="email"]';
     this.password = 'input[name="password"]';
