@@ -20,6 +20,6 @@ describe('check Sign Up Page', () => {
       signinData = data;
     });
     registration.visit();
-    waitForPageToLoad();
+    // waitForPageToLoad();
   });
 });

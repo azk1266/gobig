@@ -1,3 +1,7 @@
+import Registration from '/signin';
+
+const registration = new Registration();
+
 class Signin {
   constructor() {
     // this.actions = new Actions();
