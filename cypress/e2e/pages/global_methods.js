@@ -15,7 +15,7 @@ export const checkSigninLogo = (selector, src) => {
 };
 
 export const verifyTheInputField = (selector, attr, text) => {
-  cy.get(selector).should('have.attr', attr, text).should('exist');
+  cy.get(selector).should('have.attr', attr, text).should('be.visible');
 };
 
 export const typeText = (selector, text) => {

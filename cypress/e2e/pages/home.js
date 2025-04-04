@@ -17,7 +17,7 @@ class Home {
     cy.get('#about').should('be.visible');
   }
   clickSignIn() {
-    cy.get(this.SignIn).should('be.visible').click();
+    cy.get(this.signIn).should('be.visible').click();
   }
 }
 
