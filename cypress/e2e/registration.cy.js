@@ -1,7 +1,10 @@
 import Registration from './pages/registration';
 import Home from './pages/home';
 import Signin from './pages/signin';
-import { getRandomEmail, getRandomUser } from './pages/utils/random_function';
+import {
+  getRandomEmailWithoutDot,
+  getRandomUser,
+} from './pages/utils/random_function';
 import Chance from 'chance';
 
 const chance = new Chance();
@@ -14,13 +17,13 @@ describe('check Sign Up Page', () => {
   let randomEmail;
   let randomPassword;
   let randomName;
-  // let randomEmailWithoutDot;
+  let randomEmailWithoutDot;
 
   beforeEach(() => {
     // randomEmail = getRandomEmail();
     // randomPassword = getRandomPassword();
     // randomName = getRandomName();
-    // randomEmailWithoutDot = getRandomEmailWithoutDot();
+    randomEmailWithoutDot = getRandomEmailWithoutDot();
     cy.fixture('signinData').then((data) => {
       signinData = data;
     });
@@ -128,14 +131,13 @@ describe('check Sign Up Page', () => {
     registration.buttonIsDisabled();
     cy.allure().endStep();
   });
-  // it('sign up negative Email without dot', () => {
-  //   const user = getRandomUser();
-  //   let password = user.password;
-  //   registration.nameEntering(user.name);
-  //   registration.emailEntering(user.email);
-  //   registration.passwordEntering(password);
-  //   registration.confirmPassword(password);
-  //   registration.buttonIsDisabled();
-  // });
-  //getRandomEmailWithoutDot()
+  it('sign up negative Email without dot', () => {
+    const user = getRandomUser();
+    let password = user.password;
+    registration.nameEntering(user.name);
+    registration.emailEntering(randomEmailWithoutDot);
+    registration.passwordEntering(password);
+    registration.confirmPassword(password);
+    registration.buttonIsDisabled();
+  });
 });
