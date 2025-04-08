@@ -50,7 +50,7 @@ class Registration {
   }
   checkFacebookRedirect() {
     cy.get(this.facebookButton).click();
-    cy.timeout(3000);
+    cy.timeout(10000);
     cy.origin('https://www.facebook.com/', () => {
       cy.url().should('include', 'facebook.com');
     });

@@ -34,7 +34,7 @@ class Signin {
   }
   checkFacebookRedirect() {
     this.registration.checkFacebookRedirect();
-    cy.get(this.facebookButton).click();
+    // cy.get(this.facebookButton).click();
   }
   //Email, password properties check
   checkEmailProperty() {
