@@ -1,10 +1,8 @@
-import Registration from '/signin';
-
-const registration = new Registration();
+import Registration from './/registration';
 
 class Signin {
   constructor() {
-    // this.actions = new Actions();
+    this.registration = new Registration();
     this.googleButton = '[href="/auth/google"]';
     this.facebookButton = '[href="/auth/facebook"]';
     this.email = 'input[name="email"]';
@@ -19,35 +17,24 @@ class Signin {
   }
   //Google button
   checkGoogleButton() {
-    cy.checkButton(this.googleButton, '/auth/google', 'Sign in with Google');
+    this.registration.checkGoogleButton();
   }
   checkGoogleLitleLogo() {
-    cy.checkSigninLogo(this.googleButton, 'google-icon.svg');
+    this.registration.checkGoogleLitleLogo();
   }
   checkGoogleRedirect() {
-    cy.get(this.googleButton).click();
-    cy.timeout(10000);
-    cy.origin('https://accounts.google.com', () => {
-      cy.url().should('include', 'accounts.google.com');
-    });
+    this.registration.checkGoogleRedirect();
   }
   //Facebook registration button
   checkFacebookButton() {
-    cy.checkButton(
-      this.facebookButton,
-      '/auth/facebook',
-      'Sign in with Facebook'
-    );
+    this.registration.checkFacebookButton();
   }
   checkFacebookLitleLogo() {
     cy.checkSigninLogo(this.facebookButton, 'facebook-2.svg');
   }
   checkFacebookRedirect() {
+    this.registration.checkFacebookRedirect();
     cy.get(this.facebookButton).click();
-    cy.timeout(3000);
-    cy.origin('https://www.facebook.com/', () => {
-      cy.url().should('include', 'facebook.com');
-    });
   }
   //Email, password properties check
   checkEmailProperty() {

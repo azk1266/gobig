@@ -11,6 +11,10 @@ class Registration {
     this.termsLink = 'a[href="/terms_and_conditions"]';
     this.subscribe = '#kt_sign_up_form > div:nth-child(10) > div > input';
     this.signUp = '.btn.btn-primary';
+    this.repeatPSWwarning = '.text-danger.errors-field';
+    this.wrongRepeatPSWwarningText = 'The password field format is invalid.';
+    this.withoutPSWwarningText =
+      'The password field confirmation does not match.';
   }
 
   visit() {
@@ -77,12 +81,12 @@ class Registration {
   passwordEntering(password) {
     cy.typeText(this.password, password);
   }
-  repeatPassword(password) {
+  confirmPassword(password) {
     cy.typeText(this.repeatPassword, password);
   }
   //checkboxes
   checkTermsTextIsVisible() {
-    cy.get(termsText).should('be.visible');
+    cy.get(this.termsCheckbox).parent().should('contain.text', this.termsText);
   }
 
   checkTermsLinkIsClickable() {
@@ -98,8 +102,21 @@ class Registration {
 
   //sign up button
   clickSignUp() {
-    cy.get(this.signUp).click();
+    cy.get(this.signUp).should('not.be.disabled').click();
+  }
+  buttonIsDisabled() {
+    cy.get(this.signUp).should('be.disabled');
+  }
+  //wrong entering placeholders
+  confirmWrongPasswordPlaceholder() {
+    cy.get(this.repeatPSWwarning)
+      .should('be.visible')
+      .should('contain', this.wrongRepeatPSWwarningText);
+  }
+  confirmWithoutPasswordPlaceholder() {
+    cy.get(this.repeatPSWwarning)
+      .should('be.visible')
+      .should('contain', this.withoutPSWwarningText);
   }
 }
-
-export default Signin;
+export default Registration;
